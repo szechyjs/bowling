@@ -1,13 +1,17 @@
 source 'https://rubygems.org'
+ruby "1.9.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: :development
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+# Use PostgreSQL as the production database
+gem 'pg', group: :production
+
+# Use LESS for stylesheets
+gem 'less-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -16,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -36,10 +40,31 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use Twitter Bootstrap
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
+
+# Use Font Awesome icons
+gem 'font-awesome-rails'
+
+# Add support for heroku
+gem 'rails_12factor', group: :production
+
+group :development, :test do
+  gem 'dotenv-rails'    # Setup ENV for non-production
+end
+
+# Testing
+group :test do
+  gem 'simplecov', :require => false
+  gem 'minitest-spec-rails'
+  gem 'factory_girl_rails'
+  gem 'turn'
+end
