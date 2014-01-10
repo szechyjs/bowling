@@ -39,6 +39,7 @@ GEM
     ansi (1.4.3)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt-ruby (3.1.2)
     bootstrap-datepicker-rails (1.1.1.11)
       railties (>= 3.0)
     builder (3.1.4)
@@ -50,6 +51,12 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     commonjs (0.2.7)
+    devise (3.2.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     docile (1.1.1)
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
@@ -61,9 +68,13 @@ GEM
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
+    faraday (0.8.9)
+      multipart-post (~> 1.2.0)
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
+    hashie (2.0.5)
     hike (1.2.3)
+    httpauth (0.2.0)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -72,6 +83,8 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    jwt (0.1.8)
+      multi_json (>= 1.5)
     kgio (2.8.1)
     less (2.4.0)
       commonjs (~> 0.2.7)
@@ -88,6 +101,23 @@ GEM
       minitest (~> 4.7)
       rails (>= 3.0, < 4.1)
     multi_json (1.8.2)
+    multipart-post (1.2.0)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    omniauth-google-oauth2 (0.2.2)
+      omniauth (~> 1.0)
+      omniauth-oauth2
+    omniauth-oauth2 (1.1.1)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
+    orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -156,6 +186,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -163,6 +195,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-datepicker-rails
   coffee-rails (~> 4.0.0)
+  devise
   dotenv-rails
   factory_girl_rails
   font-awesome-rails
@@ -170,6 +203,8 @@ DEPENDENCIES
   jquery-rails
   less-rails
   minitest-spec-rails
+  omniauth
+  omniauth-google-oauth2
   pg
   rails (= 4.0.2)
   rails_12factor

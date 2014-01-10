@@ -42,3 +42,16 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.gplus-login-button {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  height: 44px;
+}
+
+.nav-user-photo {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  height: 44px;
+  width: 44px;
+}

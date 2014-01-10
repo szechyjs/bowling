@@ -39,6 +39,21 @@
             <%= menu_item "Teams", teams_path %>
             <%= menu_item "Bowlers", bowlers_path %>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <%= menu_item "Logout", destroy_user_session_path %>
+              </ul>
+            </li>
+            <li>
+              <%= image_tag(current_user.picture, alt: "User Photo", class: 'nav-user-photo') %>
+            </li>
+          </ul>
+          <% else %>
+           <%= link_to image_tag('https://developers.google.com/accounts/images/sign-in-with-google.png', alt: 'Sign in with Google', class: 'gplus-login-button'), user_omniauth_authorize_path(:google_oauth2) %>
+          <% end %>
         </div>
       </div>
     </div>

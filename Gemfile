@@ -48,6 +48,15 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Use devise for user authentication
+gem 'devise'
+
+# Add OmniAuth OAuth support
+gem 'omniauth'
+
+# Add Google OAuth2 login
+gem 'omniauth-google-oauth2'
+
 # Use Twitter Bootstrap
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
 

@@ -1,4 +1,5 @@
 class BowlersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_bowler, only: [:show, :edit, :update, :destroy]
 
   # GET /bowlers
