@@ -1,14 +1,59 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Bowling</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Bowling" %></title>
+    <%= csrf_meta_tags %>
 
-<%= yield %>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
 
-</body>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bowling</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <%= menu_item "Leagues", leagues_path %>
+            <%= menu_item "Teams", teams_path %>
+            <%= menu_item "Bowlers", bowlers_path %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">&copy; Jared Szechy 2014</p>
+      </div>
+    </div>
+  </body>
 </html>

@@ -11,6 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140109235832) do
+
+  create_table "bowlers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email",      null: false
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bowlers", ["email"], name: "index_bowlers_on_email", unique: true
+  add_index "bowlers", ["team_id"], name: "index_bowlers_on_team_id"
+
+  create_table "leagues", force: true do |t|
+    t.string   "name"
+    t.string   "day"
+    t.date     "start_date"
+    t.integer  "weeks"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.integer  "league_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "teams", ["league_id"], name: "index_teams_on_league_id"
 
 end

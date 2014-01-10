@@ -51,6 +51,9 @@ gem 'unicorn'
 # Use Twitter Bootstrap
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
 
+# Bootstrap date picker
+gem 'bootstrap-datepicker-rails'
+
 # Use Font Awesome icons
 gem 'font-awesome-rails'
 
