@@ -9,6 +9,7 @@ Bowling::Application.routes.draw do
   resources :leagues
   resources :teams
   resources :bowlers
+  resources :series
 
   root :to => "home#index"
 end
