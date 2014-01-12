@@ -11,7 +11,7 @@
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @bowler.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:team_id) %>:</strong></dt>
-  <dd><%= @bowler.team.name %></dd>
+  <dd><%= @bowler.team %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
