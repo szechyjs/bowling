@@ -16,12 +16,10 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
-    @leagues = League.all
   end
 
   # GET /teams/1/edit
   def edit
-    @leagues = League.all
   end
 
   # POST /teams

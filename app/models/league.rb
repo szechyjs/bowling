@@ -3,4 +3,12 @@ class League < ActiveRecord::Base
 
   validates :name, presence: true
   validates :day, presence: true
+
+  def day
+    start_date.strftime("%A")
+  end
+
+  def to_s
+    name
+  end
 end

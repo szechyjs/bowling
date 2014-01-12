@@ -1,32 +1,31 @@
-<%= form_for @league, :html => { :class => 'form' } do |f| %>
+<%= form_for @league, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
+    <%= f.label :name, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :day, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :day, options_for_select(Date::DAYNAMES, f.object.day), {}, :class => 'form-control' %>
+    <%= f.label :start_date, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-3">
+      <div class="input-group">
+        <%= f.text_field :start_date, :class => 'form-control', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd'}  %>
+        <span class="input-group-addon"><i class="icon-calendar"></i></span>
+      </div>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :start_date, :class => 'control-label' %>
-    <div class="input-group">
-      <%= f.text_field :start_date, :class => 'form-control', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd'}  %>
-      <span class="input-group-addon"><i class="icon-calendar"></i></span>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :weeks, :class => 'control-label' %>
-    <div class="controls">
+    <%= f.label :weeks, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
       <%= f.number_field :weeks, :class => 'form-control' %>
     </div>
   </div>
 
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             leagues_path, :class => 'btn btn-default' %>
- 
+    </div>
+  </div>
 <% end %>

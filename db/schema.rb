@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111190354) do
+ActiveRecord::Schema.define(version: 20140112031700) do
 
   create_table "bowlers", force: true do |t|
     t.string   "first_name"
@@ -27,12 +27,20 @@ ActiveRecord::Schema.define(version: 20140111190354) do
 
   create_table "leagues", force: true do |t|
     t.string   "name"
-    t.string   "day"
     t.date     "start_date"
     t.integer  "weeks"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "scores", force: true do |t|
+    t.integer  "score"
+    t.integer  "series_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scores", ["series_id"], name: "index_scores_on_series_id"
 
   create_table "series", force: true do |t|
     t.integer  "bowler_id"

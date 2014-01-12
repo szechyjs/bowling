@@ -1,38 +1,48 @@
-<%= form_for @series, :html => { :class => 'form-horizontal' } do |f| %>
+<%= nested_form_for @series, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :bowler_id, :class => 'form-label' %>
-    <div class="controls">
+    <%= f.label :bowler_id, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
       <%= f.collection_select :bowler_id, Bowler.all, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :league_id, :class => 'form-label' %>
-    <div class="controls">
-      <%= f.collection_select :league_id, League.all, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
+    <%= f.label :league_id, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.collection_select :league_id, League.all, :id, :name, {:include_blank => true}, {:class => 'form-control'} %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :team_id, :class => 'form-label' %>
-    <div class="controls">
-      <%= f.collection_select :team_id, Team.all, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
+    <%= f.label :team_id, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-4">
+      <%= f.collection_select :team_id, Team.all, :id, :name, {:include_blank => true}, {:class => 'form-control'} %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :week, :class => 'form-label' %>
-    <div class="controls">
+    <%= f.label :week, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
       <%= f.number_field :week, :class => 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :date, :class => 'form-label' %>
-    <div class="controls">
+    <%= f.label :date, :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
       <%= f.text_field :date, :class => 'form-control', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd'}  %>
     </div>
   </div>
 
-  
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+  <%= f.fields_for :scores %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-2">
+      <p><%= f.link_to_add "Add Score", :scores %></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             series_index_path, :class => 'btn btn-default' %>
- 
+    </div>
+  </div>
 <% end %>

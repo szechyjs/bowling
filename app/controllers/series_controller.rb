@@ -15,6 +15,7 @@ class SeriesController < ApplicationController
   # GET /series/new
   def new
     @series = Series.new
+    @series.scores.build
   end
 
   # GET /series/1/edit
@@ -69,6 +70,6 @@ class SeriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def series_params
-      params[:series]
+      params.require(:series).permit(:bowler_id, :league_id, :team_id, :week, :date, scores_attributes: [:id, :score, :_destroy])
     end
 end

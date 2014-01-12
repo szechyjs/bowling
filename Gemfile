@@ -66,8 +66,18 @@ gem 'bootstrap-datepicker-rails'
 # Use Font Awesome icons
 gem 'font-awesome-rails'
 
+# Nested form helper
+gem 'nested_form'
+
 # Add support for heroku
 gem 'rails_12factor', group: :production
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'  # Chrome Rails console
+  gem 'bullet'        # DB query lint
+end
 
 group :development, :test do
   gem 'dotenv-rails'    # Setup ENV for non-production

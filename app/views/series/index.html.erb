@@ -7,11 +7,11 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:bowler_id) %></th>
-      <th><%= model_class.human_attribute_name(:league_id) %></th>
       <th><%= model_class.human_attribute_name(:team_id) %></th>
       <th><%= model_class.human_attribute_name(:week) %></th>
       <th><%= model_class.human_attribute_name(:date) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Total</th>
+      <th>Average</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -19,12 +19,12 @@
     <% @series.each do |series| %>
       <tr>
         <td><%= link_to series.id, series_path(series) %></td>
-        <td><%= series.bowler_id %></td>
-        <td><%= series.league_id %></td>
-        <td><%= series.team_id %></td>
+        <td><%= series.bowler %></td>
+        <td><%= series.team %></td>
         <td><%= series.week %></td>
         <td><%= series.date %></td>
-        <td><%=l series.created_at %></td>
+        <td><%= series.total %></td>
+        <td><%= series.average %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_series_path(series), :class => 'btn btn-default btn-xs' %>

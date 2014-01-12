@@ -16,12 +16,10 @@ class BowlersController < ApplicationController
   # GET /bowlers/new
   def new
     @bowler = Bowler.new
-    @teams = Team.all
   end
 
   # GET /bowlers/1/edit
   def edit
-    @teams = Team.all
   end
 
   # POST /bowlers
