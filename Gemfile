@@ -63,6 +63,9 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 # Bootstrap date picker
 gem 'bootstrap-datepicker-rails'
 
+# Bootstrap form helper
+gem 'bootstrap_form'
+
 # Use Font Awesome icons
 gem 'font-awesome-rails'
 
@@ -88,5 +91,7 @@ group :test do
   gem 'simplecov', :require => false
   gem 'minitest-spec-rails'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'capybara_minitest_spec'
   gem 'turn'
 end

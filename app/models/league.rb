@@ -2,7 +2,7 @@ class League < ActiveRecord::Base
   has_many :teams
 
   validates :name, presence: true
-  validates :day, presence: true
+  validates :start_date, presence: true
 
   def day
     start_date.strftime("%A")

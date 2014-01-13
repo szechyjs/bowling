@@ -1,31 +1,11 @@
-<%= form_for @league, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="form-group">
-    <%= f.label :name, :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
-      <%= f.text_field :name, :class => 'form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :start_date, :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-3">
-      <div class="input-group">
-        <%= f.text_field :start_date, :class => 'form-control', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd'}  %>
-        <span class="input-group-addon"><i class="icon-calendar"></i></span>
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :weeks, :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-2">
-      <%= f.number_field :weeks, :class => 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            leagues_path, :class => 'btn btn-default' %>
-    </div>
-  </div>
+<%= bootstrap_form_for(@league, style: :horizontal, left: "col-sm-2", right: "col-sm-4") do |f| %>
+  <%= f.alert_message "Please fix the #{pluralize(@league.errors.count, "error")} below." %>
+  <%= f.text_field :name %>
+  <%= f.text_field :start_date, :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd'}, :append => raw('<i class="icon-calendar"></i>')  %>
+  <%= f.number_field :weeks %>
+  <%= f.form_group do %>
+    <%= f.submit nil, :class => 'btn btn-primary'  %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+          leagues_path, :class => 'btn btn-default' %>
+  <% end %>
 <% end %>
