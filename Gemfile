@@ -80,6 +80,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'  # Chrome Rails console
   gem 'bullet'        # DB query lint
+  gem 'rails_best_practices'
 end
 
 group :development, :test do

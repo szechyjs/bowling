@@ -1,5 +1,5 @@
-<%= bootstrap_form_for @bowler, style: :horizontal, left: "col-sm-2", right: "col-sm-4" do |f| %>
-  <%= f.alert_message "Please fix the #{pluralize(@bowler.errors.count, "error")} below." %>
+<%= bootstrap_form_for bowler, style: :horizontal, left: "col-sm-2", right: "col-sm-4" do |f| %>
+  <%= f.alert_message "Please fix the #{pluralize(bowler.errors.count, "error")} below." %>
   <%= f.text_field :first_name, :class => 'form-control' %>
   <%= f.text_field :last_name, :class => 'form-control' %>
   <%= f.text_field :email, :class => 'form-control' %>

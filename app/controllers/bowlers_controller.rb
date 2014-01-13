@@ -5,7 +5,7 @@ class BowlersController < ApplicationController
   # GET /bowlers
   # GET /bowlers.json
   def index
-    @bowlers = Bowler.all
+    @bowlers = Bowler.all.includes(:team)
   end
 
   # GET /bowlers/1
@@ -30,9 +30,9 @@ class BowlersController < ApplicationController
     respond_to do |format|
       if @bowler.save
         format.html { redirect_to @bowler, notice: 'Bowler was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @bowler }
+        format.json { render 'show', status: :created, location: @bowler }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @bowler.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class BowlersController < ApplicationController
         format.html { redirect_to @bowler, notice: 'Bowler was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @bowler.errors, status: :unprocessable_entity }
       end
     end

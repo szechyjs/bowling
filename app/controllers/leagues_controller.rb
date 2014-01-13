@@ -30,9 +30,9 @@ class LeaguesController < ApplicationController
     respond_to do |format|
       if @league.save
         format.html { redirect_to @league, notice: 'League was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @league }
+        format.json { render 'show', status: :created, location: @league }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @league.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class LeaguesController < ApplicationController
         format.html { redirect_to @league, notice: 'League was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @league.errors, status: :unprocessable_entity }
       end
     end

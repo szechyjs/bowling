@@ -8,10 +8,6 @@ class Series < ActiveRecord::Base
 
   accepts_nested_attributes_for :scores, allow_destroy: true
 
-  def league_series?
-    league && week > 0
-  end
-
   def total
     sum = 0
     scores.each do |score|

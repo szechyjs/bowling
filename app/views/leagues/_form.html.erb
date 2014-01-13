@@ -1,5 +1,5 @@
-<%= bootstrap_form_for(@league, style: :horizontal, left: "col-sm-2", right: "col-sm-4") do |f| %>
-  <%= f.alert_message "Please fix the #{pluralize(@league.errors.count, "error")} below." %>
+<%= bootstrap_form_for(league, style: :horizontal, left: "col-sm-2", right: "col-sm-4") do |f| %>
+  <%= f.alert_message "Please fix the #{pluralize(league.errors.count, "error")} below." %>
   <%= f.text_field :name %>
   <%= f.text_field :start_date, :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd'}, :append => raw('<i class="icon-calendar"></i>')  %>
   <%= f.number_field :weeks %>

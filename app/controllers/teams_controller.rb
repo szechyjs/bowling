@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    @teams = Team.all.includes(:league)
   end
 
   # GET /teams/1
@@ -30,9 +30,9 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @team }
+        format.json { render 'show', status: :created, location: @team }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class TeamsController < ApplicationController
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end

@@ -5,7 +5,7 @@ class SeriesController < ApplicationController
   # GET /series
   # GET /series.json
   def index
-    @series = Series.all
+    @series = Series.all.includes([:bowler, :team, :scores])
   end
 
   # GET /series/1
@@ -31,9 +31,9 @@ class SeriesController < ApplicationController
     respond_to do |format|
       if @series.save
         format.html { redirect_to @series, notice: 'Series was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @series }
+        format.json { render 'show', status: :created, location: @series }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @series.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +47,7 @@ class SeriesController < ApplicationController
         format.html { redirect_to @series, notice: 'Series was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @series.errors, status: :unprocessable_entity }
       end
     end
