@@ -1,49 +1,54 @@
 require 'test_helper'
 
-class SeriesControllerTest < ActionController::TestCase
-  setup do
-    @series = series(:one)
-  end
+describe SeriesController do
+  setup :setup_test
 
-  test "should get index" do
+  it "should get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:series)
   end
 
-  test "should get new" do
+  it "should get new" do
     get :new
     assert_response :success
   end
 
-  test "should create series" do
+  it "should create series" do
     assert_difference('Series.count') do
-      post :create, series: {  }
+      post :create, series: { bowler_id: @series.bowler.id }
     end
 
     assert_redirected_to series_path(assigns(:series))
   end
 
-  test "should show series" do
+  it "should show series" do
     get :show, id: @series
     assert_response :success
   end
 
-  test "should get edit" do
+  it "should get edit" do
     get :edit, id: @series
     assert_response :success
   end
 
-  test "should update series" do
-    patch :update, id: @series, series: {  }
+  it "should update series" do
+    patch :update, id: @series, series: { bowler_id: @series.bowler.id }
     assert_redirected_to series_path(assigns(:series))
   end
 
-  test "should destroy series" do
+  it "should destroy series" do
     assert_difference('Series.count', -1) do
       delete :destroy, id: @series
     end
 
     assert_redirected_to series_index_path
+  end
+
+  private
+
+  def setup_test
+    sign_in create(:user)
+    @series = create(:series_with_scores)
   end
 end
