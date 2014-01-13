@@ -1,5 +1,7 @@
-require 'simplecov'
-require 'coveralls'
+if Rails.env == "test"
+  require 'simplecov'
+  require 'coveralls'
+end
 
 module Bowling
   module Railties
