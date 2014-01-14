@@ -12,9 +12,15 @@ class User < ActiveRecord::Base
               email: data["email"],
               provider: access_token.provider,
               uid: access_token.uid,
-              picture: data["image"]
+              picture: data["image"] || data["picture"]
             )
     end
+
+    unless user.picture
+      user.picture = data["image"] || data["picture"]
+      user.save
+    end
+
     user
   end
 end
