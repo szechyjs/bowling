@@ -74,6 +74,7 @@ gem 'nested_form'
 
 # Add support for heroku
 gem 'rails_12factor', group: :production
+gem 'heroku-api'
 
 group :development do
   gem 'better_errors'

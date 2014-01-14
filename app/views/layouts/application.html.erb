@@ -68,7 +68,13 @@
 
     <div id="footer">
       <div class="container">
-        <p class="text-muted">&copy; Jared Szechy 2014</p>
+        <p class="text-muted">&copy; Jared Szechy 2014
+        <% unless ENV["HEROKU_RELEASE_NAME"].nil? %>
+          <small>
+            <%= "#{ENV["HEROKU_RELEASE_NAME"]}-#{ENV["HEROKU_RELEASE_COMMIT"]}" %>
+          </small>
+        <% end %>
+        </p>
       </div>
     </div>
   </body>
