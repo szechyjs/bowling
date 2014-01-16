@@ -3,6 +3,8 @@
   <%= f.text_field :name %>
   <%= f.text_field :start_date, :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd'}, :append => raw('<i class="icon-calendar"></i>')  %>
   <%= f.number_field :weeks %>
+  <%= f.number_field :basis %>
+  <%= f.number_field :percentage, :append => '%' %>
   <%= f.form_group do %>
     <%= f.submit nil, :class => 'btn btn-primary'  %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

@@ -5,5 +5,7 @@ FactoryGirl.define do
     name "A League"
     start_date "2014-01-09"
     weeks 12
+    basis 210
+    percentage 90
   end
 end

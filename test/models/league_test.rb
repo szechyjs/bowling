@@ -1,7 +1,11 @@
 require 'test_helper'
 
-class LeagueTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+describe League do
+  it "has a string version" do
+    build(:league).to_s.must_equal "A League"
+  end
+
+  it "has decimal version of percentage" do
+    build(:league).percentage_decimal.must_equal 0.9
+  end
 end

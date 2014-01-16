@@ -12,6 +12,8 @@
   <dd><%= @league.start_date %></dd>
   <dt><strong><%= model_class.human_attribute_name(:weeks) %>:</strong></dt>
   <dd><%= @league.weeks %></dd>
+  <dt><strong>Handicap</strong></dt>
+  <dd><%= "#{@league.percentage}% of #{@league.basis}" %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

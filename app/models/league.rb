@@ -11,4 +11,8 @@ class League < ActiveRecord::Base
   def to_s
     name
   end
+
+  def percentage_decimal
+    percentage / 100.0
+  end
 end
