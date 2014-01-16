@@ -1,16 +1,19 @@
 class SeriesController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_series, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   # GET /series
   # GET /series.json
   def index
     @series = Series.all.includes([:bowler, :team, :scores])
+    respond_with(@series)
   end
 
   # GET /series/1
   # GET /series/1.json
   def show
+    respond_with(@series)
   end
 
   # GET /series/new
@@ -27,40 +30,22 @@ class SeriesController < ApplicationController
   # POST /series.json
   def create
     @series = Series.new(series_params)
-
-    respond_to do |format|
-      if @series.save
-        format.html { redirect_to @series, notice: 'Series was successfully created.' }
-        format.json { render 'show', status: :created, location: @series }
-      else
-        format.html { render 'new' }
-        format.json { render json: @series.errors, status: :unprocessable_entity }
-      end
-    end
+    @series.save
+    respond_with(@series)
   end
 
   # PATCH/PUT /series/1
   # PATCH/PUT /series/1.json
   def update
-    respond_to do |format|
-      if @series.update(series_params)
-        format.html { redirect_to @series, notice: 'Series was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render 'edit' }
-        format.json { render json: @series.errors, status: :unprocessable_entity }
-      end
-    end
+    @series.update(series_params)
+    respond_with(@series)
   end
 
   # DELETE /series/1
   # DELETE /series/1.json
   def destroy
     @series.destroy
-    respond_to do |format|
-      format.html { redirect_to series_index_url }
-      format.json { head :no_content }
-    end
+    respond_with(@series)
   end
 
   private

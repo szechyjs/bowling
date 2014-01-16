@@ -1,21 +1,25 @@
 class LeaguesController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_league, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   # GET /leagues
   # GET /leagues.json
   def index
     @leagues = League.all
+    respond_with(@leagues)
   end
 
   # GET /leagues/1
   # GET /leagues/1.json
   def show
+    respond_with(@league)
   end
 
   # GET /leagues/new
   def new
     @league = League.new
+    respond_with(@league)
   end
 
   # GET /leagues/1/edit
@@ -26,40 +30,22 @@ class LeaguesController < ApplicationController
   # POST /leagues.json
   def create
     @league = League.new(league_params)
-
-    respond_to do |format|
-      if @league.save
-        format.html { redirect_to @league, notice: 'League was successfully created.' }
-        format.json { render 'show', status: :created, location: @league }
-      else
-        format.html { render 'new' }
-        format.json { render json: @league.errors, status: :unprocessable_entity }
-      end
-    end
+    @league.save
+    respond_with(@league)
   end
 
   # PATCH/PUT /leagues/1
   # PATCH/PUT /leagues/1.json
   def update
-    respond_to do |format|
-      if @league.update(league_params)
-        format.html { redirect_to @league, notice: 'League was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render 'edit' }
-        format.json { render json: @league.errors, status: :unprocessable_entity }
-      end
-    end
+    @league.update(league_params)
+    respond_with(@league)
   end
 
   # DELETE /leagues/1
   # DELETE /leagues/1.json
   def destroy
     @league.destroy
-    respond_to do |format|
-      format.html { redirect_to leagues_url }
-      format.json { head :no_content }
-    end
+    respond_with(@league)
   end
 
   # GET /leagues/1/stats

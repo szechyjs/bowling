@@ -19,7 +19,7 @@ describe BowlersController do
     assert_difference('Bowler.count') do
       post :create, bowler: { first_name: bowler.first_name, last_name: bowler.last_name, email: bowler.email }
     end
-
+    flash[:notice].must_equal "Bowler was successfully created."
     assert_redirected_to bowler_path(assigns(:bowler))
   end
 
@@ -35,6 +35,7 @@ describe BowlersController do
 
   it "should update bowler" do
     patch :update, id: @bowler, bowler: { first_name: @bowler.first_name, last_name: @bowler.last_name, email: @bowler.email }
+    flash[:notice].must_equal "Bowler was successfully updated."
     assert_redirected_to bowler_path(assigns(:bowler))
   end
 
@@ -42,7 +43,7 @@ describe BowlersController do
     assert_difference('Bowler.count', -1) do
       delete :destroy, id: @bowler
     end
-
+    flash[:notice].must_equal "Bowler was successfully destroyed."
     assert_redirected_to bowlers_path
   end
 

@@ -18,7 +18,7 @@ describe TeamsController do
     assert_difference('Team.count') do
       post :create, team: { name: @team.name }
     end
-
+    flash[:notice].must_equal "Team was successfully created."
     assert_redirected_to team_path(assigns(:team))
   end
 
@@ -35,13 +35,14 @@ describe TeamsController do
   it "should update team" do
     patch :update, id: @team, team: { name: @team.name  }
     assert_redirected_to team_path(assigns(:team))
+    flash[:notice].must_equal "Team was successfully updated."
   end
 
   it "should destroy team" do
     assert_difference('Team.count', -1) do
       delete :destroy, id: @team
     end
-
+    flash[:notice].must_equal "Team was successfully destroyed."
     assert_redirected_to teams_path
   end
 

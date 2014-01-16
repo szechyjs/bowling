@@ -18,7 +18,7 @@ describe SeriesController do
     assert_difference('Series.count') do
       post :create, series: { bowler_id: @series.bowler.id }
     end
-
+    flash[:notice].must_equal "Series was successfully created."
     assert_redirected_to series_path(assigns(:series))
   end
 
@@ -34,6 +34,7 @@ describe SeriesController do
 
   it "should update series" do
     patch :update, id: @series, series: { bowler_id: @series.bowler.id }
+    flash[:notice].must_equal "Series was successfully updated."
     assert_redirected_to series_path(assigns(:series))
   end
 
@@ -41,7 +42,7 @@ describe SeriesController do
     assert_difference('Series.count', -1) do
       delete :destroy, id: @series
     end
-
+    flash[:notice].must_equal "Series was successfully destroyed."
     assert_redirected_to series_index_path
   end
 

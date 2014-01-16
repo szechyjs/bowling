@@ -1,21 +1,25 @@
 class BowlersController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_bowler, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   # GET /bowlers
   # GET /bowlers.json
   def index
     @bowlers = Bowler.all.includes(:team)
+    respond_with(@bowlers)
   end
 
   # GET /bowlers/1
   # GET /bowlers/1.json
   def show
+    respond_with(@bowler)
   end
 
   # GET /bowlers/new
   def new
     @bowler = Bowler.new
+    respond_with(@bowler)
   end
 
   # GET /bowlers/1/edit
@@ -26,40 +30,22 @@ class BowlersController < ApplicationController
   # POST /bowlers.json
   def create
     @bowler = Bowler.new(bowler_params)
-
-    respond_to do |format|
-      if @bowler.save
-        format.html { redirect_to @bowler, notice: 'Bowler was successfully created.' }
-        format.json { render 'show', status: :created, location: @bowler }
-      else
-        format.html { render 'new' }
-        format.json { render json: @bowler.errors, status: :unprocessable_entity }
-      end
-    end
+    @bowler.save
+    respond_with(@bowler)
   end
 
   # PATCH/PUT /bowlers/1
   # PATCH/PUT /bowlers/1.json
   def update
-    respond_to do |format|
-      if @bowler.update(bowler_params)
-        format.html { redirect_to @bowler, notice: 'Bowler was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render 'edit' }
-        format.json { render json: @bowler.errors, status: :unprocessable_entity }
-      end
-    end
+    @bowler.update(bowler_params)
+    respond_with(@bowler)
   end
 
   # DELETE /bowlers/1
   # DELETE /bowlers/1.json
   def destroy
     @bowler.destroy
-    respond_to do |format|
-      format.html { redirect_to bowlers_url }
-      format.json { head :no_content }
-    end
+    respond_with(@bowler)
   end
 
   private
