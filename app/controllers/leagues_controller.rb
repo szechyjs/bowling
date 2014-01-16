@@ -53,7 +53,7 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
     @teams = @league.teams
     weeks = []
-    @league.series.group(:week).each do |series|
+    @league.series.select(:week).group(:week).each do |series|
       weeks << series.week
     end
     @weeks = weeks
