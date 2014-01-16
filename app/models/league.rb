@@ -1,5 +1,6 @@
 class League < ActiveRecord::Base
   has_many :teams
+  has_many :series
 
   validates :name, presence: true
   validates :start_date, presence: true
@@ -9,7 +10,7 @@ class League < ActiveRecord::Base
   end
 
   def to_s
-    name
+    "#{name} - #{Date::MONTHNAMES[start_date.month]} #{start_date.year}"
   end
 
   def percentage_decimal

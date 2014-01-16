@@ -46,6 +46,17 @@ describe LeaguesController do
     assert_redirected_to leagues_path
   end
 
+  it "should show stats" do
+    create(:series_with_scores, league: @league)
+    get :stats, id: @league
+    assert_response :success
+  end
+
+  it "should show week stats" do
+    get :week, id: @league, week: 1
+    assert_response :success
+  end
+
   private
 
   def setup_test

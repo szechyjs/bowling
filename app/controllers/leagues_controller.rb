@@ -62,6 +62,22 @@ class LeaguesController < ApplicationController
     end
   end
 
+  # GET /leagues/1/stats
+  def stats
+    @league = League.find(params[:id])
+    @teams = @league.teams
+    weeks = []
+    @league.series.group(:week).each do |series|
+      weeks << series.week
+    end
+    @weeks = weeks
+  end
+
+  # GET /leagues/1/week/2
+  def week
+    @week = params[:week]
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_league

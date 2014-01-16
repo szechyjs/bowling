@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1><%= @league.name %>  Stats</h1>
+</div>
+
+<h3>Team Standings</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Scratch Pins</th>
+      <th>High Game</th>
+      <th>High Series</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @teams.each do |team| %>
+    <% team_stats = team.stats %>
+    <% unless team_stats.nil? %>
+    <tr>
+      <td><%= team.name %></td>
+      <td><%= team_stats[:scratch_pins] %></td>
+      <td><%= team_stats[:high_game].total %></td>
+      <td><%= team_stats[:high_series_pins] %></td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<h3>Weekly Summaries</h3>
+<% @weeks.each do |week| %>
+    <p><%= link_to "Week #{week}", week_league_path(:id => @league, :week => week) %></p>
+<% end %>

@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :series do
     bowler
-    league nil
-    team nil
+    league
+    team
     week 1
     date "2014-01-11"
 

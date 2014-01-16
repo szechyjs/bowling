@@ -6,7 +6,11 @@ Bowling::Application.routes.draw do
     get 'logout', :to => 'users/sessions#destroy', :as => :destroy_user_session
   end
 
-  resources :leagues
+  resources :leagues do
+    get 'stats', on: :member
+    get 'week/:week', on: :member, :action => 'week', :as => 'week'
+  end
+
   resources :teams
   resources :bowlers
   resources :series

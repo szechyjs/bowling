@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :score do
-    score 1
+    score 150
     series nil
   end
 end
