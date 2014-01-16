@@ -11,6 +11,10 @@ end
 
 class ActionController::TestCase
   include Devise::TestHelpers
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.add_mock(:google_oauth2, {
+    :info => {:name => "Joe Smith", :email => "joe@example.com"}, :uid => '12345'
+  })
 end
 
 class ActionDispatch::IntegrationTest
