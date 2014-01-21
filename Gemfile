@@ -76,6 +76,9 @@ gem 'nested_form'
 gem 'rails_12factor', group: :production
 gem 'heroku-api'
 
+# Add New Relic monitoring
+gem 'newrelic_rpm', group: :production
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
