@@ -86,6 +86,7 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'    # Setup ENV for non-production
+  gem 'guard-rails'
 end
 
 # Testing
