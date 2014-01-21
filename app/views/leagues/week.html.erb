@@ -12,6 +12,7 @@
         <th>Game 1</th>
         <th>Game 2</th>
         <th>Game 3</th>
+        <th>Series Average</th>
         <th>Total</th>
       </tr>
     </thead>
@@ -23,6 +24,7 @@
           <% series.scores.each do |score| %>
             <td><%= score.score %></td>
           <% end %>
+          <td><%= series.average %></td>
           <td><%= series.total %></td>
         </tr>
       <% end %>
@@ -30,9 +32,11 @@
         <td><b>Scratch Total</b></td>
         <td></td>
         <% team_totals = @totals_by_team[team_series.first.team.id] %>
-        <% team_totals.each do |total| %>
-          <td><%= total %></td>
+        <% for i in 0..(team_totals.count - 2) %>
+          <td><%= team_totals[i] %></td>
         <% end %>
+        <td></td>
+        <td><%= team_totals[team_totals.count -1] %></td>
       </tr>
       <% handicap = team_handicap team_series.first.team, @week.to_i %>
       <tr>
@@ -41,6 +45,7 @@
         <% for i in 0..(team_totals.count - 2) %>
           <td><%= team_totals[i] + handicap %></td>
         <% end %>
+        <td></td>
         <td><%= team_totals.last + (handicap * (team_totals.count - 1)) %></td>
       </tr>
     </tbody>
