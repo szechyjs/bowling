@@ -77,7 +77,7 @@ gem 'rails_12factor', group: :production
 gem 'heroku-api'
 
 # Add New Relic monitoring
-gem 'newrelic_rpm', group: :production
+gem 'newrelic_rpm'
 
 group :development do
   gem 'better_errors'
