@@ -1,3 +1,36 @@
 <div class="page-header">
   <h1>Week <%= @week %> Stats</h1>
 </div>
+
+<% @series_by_team.each do |team_series| %>
+  <% unless team_series.first.nil? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Bowler</th>
+        <th>Game 1</th>
+        <th>Game 2</th>
+        <th>Game 3</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% team_series.each do |series| %>
+        <tr>
+          <td><%= series.bowler %></td>
+          <% series.scores.each do |score| %>
+            <td><%= score.score %></td>
+          <% end %>
+          <td><%= series.total %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td><b>Scratch Total</b></td>
+        <% @totals_by_team[team_series.first.team.id].each do |total| %>
+          <td><%= total %></td>
+        <% end %>
+    </tbody>
+  </table>
+  <% end %>
+<% end %>
+

@@ -62,6 +62,26 @@ class LeaguesController < ApplicationController
   # GET /leagues/1/week/2
   def week
     @week = params[:week]
+    @series_by_team = []
+    @games_by_team = []
+    @totals_by_team = Hash.new
+    League.find(params[:id]).teams.each do |team|
+      series = Series.where("league_id = ? AND team_id = ? AND week = ?", params[:id], team.id, params[:week]).includes([:bowler, :scores])
+      @series_by_team << series
+      game1 = 0
+      game2 = 0
+      game3 = 0
+      total = 0
+      series.each do |series|
+        game1 += series.scores[0].score
+        game2 += series.scores[1].score
+        game3 += series.scores[2].score
+        total += series.total
+      end
+      totals = []
+      totals << game1 << game2 << game3 << total
+      @totals_by_team[team.id] = totals
+    end
   end
 
   private

@@ -10,6 +10,7 @@
       <th><%= model_class.human_attribute_name(:day) %></th>
       <th><%= model_class.human_attribute_name(:start_date) %></th>
       <th><%= model_class.human_attribute_name(:weeks) %></th>
+      <th>Stats</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,6 +22,7 @@
         <td><%= league.day %></td>
         <td><%= league.start_date %></td>
         <td><%= league.weeks %></td>
+        <td><%= link_to "Stats", stats_league_path(league) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_league_path(league), :class => 'btn btn-default btn-xs' %>
