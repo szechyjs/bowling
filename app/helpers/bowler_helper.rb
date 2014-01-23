@@ -1,6 +1,7 @@
 module BowlerHelper
   def bowler_handicap(bowler, team, week)
-    if week == 1
+    weeks = Series.select(:id, :week).where(bowler: bowler, team: team).order(:week)
+    if week == weeks.first.week
       series = Series.where(bowler: bowler, week: week, team: team).first
       average = series.average
     else
