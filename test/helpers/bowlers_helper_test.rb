@@ -13,4 +13,10 @@ describe BowlerHelper do
     handicap = bowler_handicap s.bowler, s.team, 2
     handicap.must_equal 54
   end
+
+  it "calculates handicap for week 2 with no week 1" do
+    s = create(:series_with_scores, week: 2)
+    handicap = bowler_handicap s.bowler, s.team, 2
+    handicap.must_equal 54
+  end
 end
