@@ -6,7 +6,7 @@ class SeriesController < ApplicationController
   # GET /series
   # GET /series.json
   def index
-    @series = Series.all.includes([:bowler, :team, :scores])
+    @series = Series.includes({:team => :league}, :bowler, :scores)
     respond_with(@series)
   end
 
