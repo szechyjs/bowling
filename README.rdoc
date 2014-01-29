@@ -1,6 +1,7 @@
 {<img src="https://travis-ci.org/szechyjs/bowling.png?branch=master" alt="Build Status" />}[https://travis-ci.org/szechyjs/bowling]
 {<img src="https://codeclimate.com/github/szechyjs/bowling.png" />}[https://codeclimate.com/github/szechyjs/bowling]
 {<img src="https://coveralls.io/repos/szechyjs/bowling/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/szechyjs/bowling]
+{<img src="https://gemnasium.com/szechyjs/bowling.png" alt="Dependency Status" />}[https://gemnasium.com/szechyjs/bowling]
 
 == README
 
