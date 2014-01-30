@@ -56,6 +56,6 @@ class SeriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def series_params
-      params.require(:series).permit(:bowler_id, :league_id, :team_id, :week, :date, scores_attributes: [:id, :score, :_destroy])
+      params.require(:series).permit(:bowler_id, :league_id, :team_id, :week, :date, scores_attributes: [:id, :score, :absent, :_destroy])
     end
 end

@@ -4,6 +4,12 @@
     <div class="col-sm-2">
       <%= f.number_field :score, :class => 'form-control' %>
     </div>
+    <div>
+      <label>
+        <%= f.check_box :absent %>
+        Absent
+      </label>
+    </div>
     <%= f.link_to_remove "x", :class => 'close' %>
   </div>
 </p>

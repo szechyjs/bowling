@@ -9,8 +9,8 @@ module BowlerHelper
       games = 0
       total = 0.0
       series.each do |aseries|
-        total += aseries.total
-        games += aseries.scores.count
+        total += aseries.handicap_total
+        games += aseries.handicap_games
       end
       average = (total / games).floor
     end
