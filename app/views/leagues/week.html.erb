@@ -20,7 +20,7 @@
       <% team_series.includes(:team).each do |series| %>
         <tr>
           <td><%= series.bowler %></td>
-          <td><%= bowler_handicap series.bowler, series.team, @week.to_i %>
+          <td><%= series.handicap %>
           <% series.scores.each do |score| %>
             <td><%= score.score %></td>
           <% end %>

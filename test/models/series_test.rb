@@ -31,4 +31,20 @@ describe Series do
     series.handicap_games.must_equal 0
   end
 
+   it "calculates handicap for week 1" do
+    s = create(:series_with_scores)
+    s.handicap.must_equal 54
+  end
+
+  it "calculates handicap for week x" do
+    s = create(:series_with_scores)
+    s2 = create(:series_with_scores, bowler: s.bowler, team: s.team, league: s.league, week: 2)
+    s2.handicap.must_equal 54
+  end
+
+  it "calculates handicap for week 2 with no week 1" do
+    s = create(:series_with_scores, week: 2)
+    s.handicap.must_equal 54
+  end
+
 end

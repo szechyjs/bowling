@@ -1,8 +1,6 @@
 require 'test_helper'
 
 describe TeamHelper do
-  include BowlerHelper
-
   it "calculates the team handicap for week 1" do
     t = create(:team_of_bowlers)
     a = create(:series_with_scores, team: t, bowler: t.bowlers[0])

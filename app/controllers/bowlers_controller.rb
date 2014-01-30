@@ -6,7 +6,7 @@ class BowlersController < ApplicationController
   # GET /bowlers
   # GET /bowlers.json
   def index
-    @bowlers = Bowler.all.includes(:team)
+    @bowlers = Bowler.all.includes({:team => :league})
     respond_with(@bowlers)
   end
 

@@ -48,4 +48,16 @@ class Series < ActiveRecord::Base
     end
   end
 
+  def handicap
+    if Series.select(:id, :week).where(bowler: bowler, team: team).order(:week).first == self
+      average = handicap_average
+    else
+      series = Series.where(bowler: bowler, week: 1..(week-1), team: team)
+      games = series.map(&:handicap_games).inject(0, :+)
+      total = series.map(&:handicap_total).inject(0.0, :+)
+      average = (total / games).floor
+    end
+    handicap = (team.league.basis - average) * team.league.percentage_decimal
+    handicap.floor
+  end
 end
