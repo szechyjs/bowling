@@ -21,4 +21,14 @@ describe Series do
     series.handicap_games.must_equal 0
   end
 
+  it "computes the totals and average of empty series" do
+    series = create(:series)
+    series.total.must_equal 0
+    series.average.must_equal 0
+    series.games.must_equal 0
+    series.handicap_total.must_equal 0
+    series.handicap_average.must_equal 0
+    series.handicap_games.must_equal 0
+  end
+
 end
