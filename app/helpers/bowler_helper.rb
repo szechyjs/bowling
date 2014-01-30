@@ -12,7 +12,7 @@ module BowlerHelper
         total += aseries.total
         games += aseries.scores.count
       end
-      average = total / games
+      average = (total / games).floor
     end
       handicap = (team.league.basis - average) * team.league.percentage_decimal
       handicap.floor
