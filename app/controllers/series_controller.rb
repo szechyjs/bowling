@@ -48,6 +48,17 @@ class SeriesController < ApplicationController
     respond_with(@series)
   end
 
+  def get_next_week
+    @next_week = ""
+    series = Series.select(:id, :week).where(:bowler_id => params[:bowler], :league_id => params[:league], :team_id => params[:team]).order(:week).last
+
+    if not series.nil?
+      if not series.week.nil?
+        @next_week = series.week + 1
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_series

@@ -46,6 +46,12 @@ describe SeriesController do
     assert_redirected_to series_index_path
   end
 
+  it "should get next week" do
+    get :get_next_week, :format => 'js', :bowler => @series.bowler.id, :league => @series.league.id, :team => @series.team.id
+    response.content_type.must_equal Mime::JS
+    response.body.must_include "val('2')"
+  end
+
   private
 
   def setup_test

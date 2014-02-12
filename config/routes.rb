@@ -13,7 +13,11 @@ Bowling::Application.routes.draw do
 
   resources :teams
   resources :bowlers
-  resources :series
+  resources :series do
+    collection do
+      get 'get_next_week'
+    end
+  end
 
   root :to => "home#index"
 end

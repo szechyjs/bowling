@@ -11,3 +11,16 @@ $(document).on 'page:change', ->
     else
         $('#series_team_id').empty()
         $('#series_team_id').parent().parent().hide()
+
+  $('#series_bowler_id, #series_league_id, #series_team_id').change ->
+    bowler = $('#series_bowler_id').val()
+    league = $('#series_league_id').val()
+    team = $('#series_team_id').val()
+    if bowler and league and team
+      $.ajax
+        url: '/series/get_next_week'
+        data:
+          bowler: bowler
+          league: league
+          team: team
+        dataType: 'script'
