@@ -1,4 +1,4 @@
-jQuery ->
+$(document).on 'page:change', ->
   $('#series_team_id').parent().parent().hide()
   teams = $('#series_team_id').html()
   $('#series_league_id').change ->
