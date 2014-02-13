@@ -3,7 +3,14 @@
 </div>
 
 <%= line_chart @league.teams.map{|team|
-  {:name => team.name, :data => team.series_scores} }%>
+  {:name => team.name, :data => team.series_scores} },
+  {
+    library: {
+      yAxis: {
+        min: 1000
+      }
+    }
+  }%>
 
 <h3>Team Standings</h3>
 <table class="table">
