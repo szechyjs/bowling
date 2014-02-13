@@ -52,4 +52,20 @@ describe Team do
     team_stats[:high_series_pins].must_equal 1800
     team_stats[:high_series_week].must_equal 2
   end
+
+  it "computes weekly totals" do
+    team = create(:team)
+    create(:series_with_scores, team: team)
+    create(:series_with_scores, team: team)
+    create(:series_with_scores, team: team)
+    create(:series_with_scores, team: team, week: 2)
+    create(:series_with_scores, team: team, week: 2)
+    create(:series_with_scores, team: team, week: 2)
+    scores = team.series_scores
+    scores.wont_be_nil
+    scores.length.must_equal 2
+    expected = [Date.new(2014,01,11), 1350]
+    scores[0].must_equal expected
+    scores[1].must_equal expected
+  end
 end

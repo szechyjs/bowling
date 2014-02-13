@@ -2,6 +2,9 @@
   <h1><%= @league.name %>  Stats</h1>
 </div>
 
+<%= line_chart @league.teams.map{|team|
+  {:name => team.name, :data => team.series_scores} }%>
+
 <h3>Team Standings</h3>
 <table class="table">
   <thead>

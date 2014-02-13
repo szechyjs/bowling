@@ -52,4 +52,26 @@ class Team < ActiveRecord::Base
 
     { :scratch_pins => scratch_pins, :high_game => high_game, :high_series_pins => high_series_pins, :high_series_week => high_series_week }
   end
+
+  def series_scores
+    series_ordered = series.order(:week).includes(:scores)
+
+    return nil if series_ordered.empty?
+
+    week = series_ordered.first.week
+    scratch_pins = 0
+    scores = []
+    date = series_ordered.first.date
+    series_ordered.each do |series|
+      if week < series.week
+        scores << [date, scratch_pins]
+        scratch_pins = 0
+        week = series.week
+        date = series.date
+      end
+      scratch_pins += series.total
+    end
+    scores << [date, scratch_pins]
+    scores
+  end
 end

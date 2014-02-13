@@ -16,4 +16,6 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require bootstrap-datepicker
+//= require highcharts
+//= require chartkick
 //= require_tree .

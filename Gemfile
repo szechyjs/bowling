@@ -72,6 +72,10 @@ gem 'font-awesome-rails'
 # Nested form helper
 gem 'nested_form'
 
+# Charting
+gem 'chartkick'
+gem 'highcharts-rails'
+
 # Add support for heroku
 gem 'rails_12factor', group: :production
 gem 'heroku-api'
@@ -101,4 +105,7 @@ group :test do
   gem 'capybara'
   gem 'capybara_minitest_spec'
   gem 'turn'
+  gem 'flog'
+  gem 'reek'
+  gem 'flay'
 end
