@@ -66,7 +66,7 @@ class LeaguesController < ApplicationController
     @games_by_team = []
     @totals_by_team = Hash.new
     League.find(params[:id]).teams.each do |team|
-      team_series = team.series.where(week: params[:week]).includes([:bowler, :scores])
+      team_series = team.series.where(week: params[:week]).includes([:bowler, :scores]).order(:id)
       @series_by_team << team_series
       game1 = 0
       game2 = 0

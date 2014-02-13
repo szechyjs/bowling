@@ -2,7 +2,7 @@ class Series < ActiveRecord::Base
   belongs_to :bowler
   belongs_to :league
   belongs_to :team
-  has_many :scores, :dependent => :destroy
+  has_many :scores, :dependent => :destroy, :order => "id ASC"
 
   validates :bowler, presence: true
 
