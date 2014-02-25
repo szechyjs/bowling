@@ -68,4 +68,21 @@ describe Team do
     scores[0].must_equal expected
     scores[1].must_equal expected
   end
+
+  it "computes bowler stats" do
+    team = create(:team)
+    b1 = create(:bowler, team: team)
+    b2 = create(:bowler, team: team)
+    create(:series_with_scores, team: team, bowler: b1)
+    create(:series_with_scores, team: team, bowler: b2)
+    create(:series_with_scores, team: team, bowler: b1, week: 2)
+    create(:series_with_scores, team: team, bowler: b2, week: 2)
+    bowler_stats = team.bowler_stats
+    bowler_stats.wont_be_nil
+    bowler_stats.length.must_equal 2
+    bowler_stats[0][:handicap].must_equal 54
+    bowler_stats[0][:average].must_equal 150
+    bowler_stats[0][:scratch_game].must_equal 150
+    bowler_stats[0][:scratch_series].must_equal 450
+  end
 end

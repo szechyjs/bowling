@@ -2,7 +2,7 @@ class Series < ActiveRecord::Base
   belongs_to :bowler
   belongs_to :league
   belongs_to :team
-  has_many :scores, :dependent => :destroy, :order => "id ASC"
+  has_many :scores, -> { order("id ASC") }, :dependent => :destroy
 
   validates :bowler, presence: true
 
@@ -26,6 +26,10 @@ class Series < ActiveRecord::Base
 
   def games
     scores.count
+  end
+
+  def high_game
+    scores.max.score
   end
 
   def handicap_games
@@ -52,12 +56,27 @@ class Series < ActiveRecord::Base
     if Series.select(:id, :week).where(bowler: bowler, team: team).order(:week).first == self
       average = handicap_average
     else
-      series = Series.where(bowler: bowler, week: 1..(week-1), team: team)
-      games = series.map(&:handicap_games).inject(0, :+)
-      total = series.map(&:handicap_total).inject(0.0, :+)
-      average = (total / games).floor
+      average = Series.average(bowler, team, week)
     end
-    handicap = (team.league.basis - average) * team.league.percentage_decimal
-    handicap.floor
+    Series.handicap(team, average)
+  end
+
+  def self.average(bowler, team, week = nil)
+    if week.nil?
+      week = Series.select(:week).where(bowler: bowler, team: team).order(:week).last.week
+    else
+      week = week - 1
+    end
+
+    series = Series.where(bowler: bowler, week: 1..(week), team: team)
+    games = series.map(&:handicap_games).inject(0, :+)
+    total = series.map(&:handicap_total).inject(0.0, :+)
+    (total / games).floor
+  end
+
+  def self.handicap(team, average)
+    league = team.league
+    hndcap = (league.basis - average) * league.percentage_decimal
+    hndcap.floor
   end
 end

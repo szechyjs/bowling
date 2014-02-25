@@ -51,12 +51,13 @@ class LeaguesController < ApplicationController
   # GET /leagues/1/stats
   def stats
     @league = League.find(params[:id])
-    @teams = @league.teams
+    @teams = @league.teams.includes([:bowlers,:league])
     weeks = []
     @league.series.select(:week).group(:week).order(:week).each do |series|
       weeks << series.week
     end
     @weeks = weeks
+    @bowler_stats = @teams.map{ |team| team.bowler_stats }.flatten
   end
 
   # GET /leagues/1/week/2

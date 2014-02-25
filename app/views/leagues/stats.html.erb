@@ -34,6 +34,35 @@
     </tr>
     <% end %>
   <% end %>
+  </tbody>
+</table>
+
+<h3>Player Standings</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Handicap</th>
+      <th>Average</th>
+      <th>High Game</th>
+      <th>High Series</th>
+      <th>Scratch Game</th>
+      <th>Scratch Series</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @bowler_stats.each do |bowler| %>
+    <tr>
+      <td><%= bowler[:name] %></td>
+      <td><%= bowler[:handicap] %></td>
+      <td><%= bowler[:average] %></td>
+      <td></td>
+      <td></td>
+      <td><%= bowler[:scratch_game] %></td>
+      <td><%= bowler[:scratch_series] %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
 
 <h3>Weekly Summaries</h3>

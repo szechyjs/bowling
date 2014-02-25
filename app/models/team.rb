@@ -74,4 +74,30 @@ class Team < ActiveRecord::Base
     scores << [date, scratch_pins]
     scores
   end
+
+  def bowler_stats
+    stats = []
+    bowlers.each do |bowler|
+      avg = Series.average(bowler, self)
+      handicap = Series.handicap(self, avg)
+      high_game = 0
+      high_series = 0
+      scratch_game = 0
+      scratch_series = 0
+      series = Series.where(team: self, bowler: bowler).includes(:scores)
+      series.each do |s|
+        if s.high_game > scratch_game
+          scratch_game = s.high_game
+        end
+
+        if s.total > scratch_series
+          scratch_series = s.total
+        end
+      end
+
+      stats << {:name => bowler.name, :handicap => handicap, :average => avg,
+                :scratch_game => scratch_game, :scratch_series => scratch_series}
+    end
+    stats.sort_by { |stat| stat[:handicap] }
+  end
 end
