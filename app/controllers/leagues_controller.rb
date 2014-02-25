@@ -57,7 +57,7 @@ class LeaguesController < ApplicationController
       weeks << series.week
     end
     @weeks = weeks
-    @bowler_stats = @teams.map{ |team| team.bowler_stats }.flatten
+    @bowler_stats = @teams.map{ |team| team.bowler_stats }.flatten.sort_by { |stat| stat[:handicap] }
   end
 
   # GET /leagues/1/week/2
