@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130031458) do
+ActiveRecord::Schema.define(version: 20140225212413) do
 
   create_table "bowlers", force: true do |t|
     t.string   "first_name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140130031458) do
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nickname"
   end
 
   add_index "bowlers", ["email"], name: "index_bowlers_on_email", unique: true

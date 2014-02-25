@@ -56,6 +56,6 @@ class BowlersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bowler_params
-      params.require(:bowler).permit(:first_name, :last_name, :email, :team_id)
+      params.require(:bowler).permit(:first_name, :last_name, :nickname, :email, :team_id)
     end
 end

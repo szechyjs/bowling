@@ -6,11 +6,19 @@ class Bowler < ActiveRecord::Base
   validates :email, presence: true
   validates :email, uniqueness: true
 
-  def name
+  def short_name
     "#{first_name} #{last_name}"
   end
 
+  def name
+    if nickname.blank?
+      short_name
+    else
+      "#{short_name} (#{nickname})"
+    end
+  end
+
   def to_s
-    name
+    short_name
   end
 end

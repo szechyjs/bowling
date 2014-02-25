@@ -2,6 +2,7 @@
   <%= f.alert_message "Please fix the #{pluralize(bowler.errors.count, "error")} below." %>
   <%= f.text_field :first_name, :class => 'form-control' %>
   <%= f.text_field :last_name, :class => 'form-control' %>
+  <%= f.text_field :nickname, :class => 'form-control' %>
   <%= f.text_field :email, :class => 'form-control' %>
   <%= f.collection_select :team_id, Team.all, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
   <%= f.form_group do %>
