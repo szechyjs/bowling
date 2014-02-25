@@ -29,7 +29,7 @@ class Series < ActiveRecord::Base
   end
 
   def high_game
-    scores.max.score
+    scores.max_by(&:score).score
   end
 
   def handicap_games
