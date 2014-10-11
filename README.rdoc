@@ -2,6 +2,7 @@
 {<img src="https://codeclimate.com/github/szechyjs/bowling.png" />}[https://codeclimate.com/github/szechyjs/bowling]
 {<img src="https://coveralls.io/repos/szechyjs/bowling/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/szechyjs/bowling]
 {<img src="https://gemnasium.com/szechyjs/bowling.png" alt="Dependency Status" />}[https://gemnasium.com/szechyjs/bowling]
+{<img src="https://codeship.io/projects/dd478cb0-333b-0132-3ee8-02230fd36c68/status" alt="Codeship Status" />}[https://codeship.io/projects/40578]
 
 == README
 
