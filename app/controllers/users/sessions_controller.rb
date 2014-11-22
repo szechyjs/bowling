@@ -1,4 +1,4 @@
-class Users
+module Users
   class SessionsController < ApplicationController
     def index
     end
