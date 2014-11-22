@@ -16,12 +16,13 @@ module Responders
     end
 
     def i18n_lookup(status)
-      namespace = controller.controller_path.gsub("/",".")
+      namespace = controller.controller_path.gsub('/', '.')
       action = controller.action_name
-      lookup = [namespace, action, status].join(".").to_sym
-      default = ["actions", action, status].join(".").to_sym
-      I18n.t(lookup, scope: :flash, default: default,
-          resource_name: resource.class.model_name.human)
+      lookup = [namespace, action, status].join('.').to_sym
+      default = ['actions', action, status].join('.').to_sym
+      I18n.t(lookup, scope: :flash,
+                     default: default,
+                     resource_name: resource.class.model_name.human)
     end
   end
 end

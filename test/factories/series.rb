@@ -6,7 +6,7 @@ FactoryGirl.define do
     league
     team
     week 1
-    date "2014-01-11"
+    date '2014-01-11'
 
     factory :series_with_scores do
       ignore do

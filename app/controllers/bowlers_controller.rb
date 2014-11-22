@@ -1,12 +1,12 @@
 class BowlersController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_bowler, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
   # GET /bowlers
   # GET /bowlers.json
   def index
-    @bowlers = Bowler.all.includes({:team => :league})
+    @bowlers = Bowler.all.includes(team: :league)
     respond_with(@bowlers)
   end
 
@@ -49,13 +49,14 @@ class BowlersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bowler
-      @bowler = Bowler.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def bowler_params
-      params.require(:bowler).permit(:first_name, :last_name, :nickname, :email, :team_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bowler
+    @bowler = Bowler.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def bowler_params
+    params.require(:bowler).permit(:first_name, :last_name, :nickname, :email, :team_id)
+  end
 end

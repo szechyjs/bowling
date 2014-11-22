@@ -3,46 +3,46 @@ require 'test_helper'
 describe TeamsController do
   setup :setup_test
 
-  it "should get index" do
+  it 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:teams)
   end
 
-  it "should get new" do
+  it 'should get new' do
     get :new
     assert_response :success
   end
 
-  it "should create team" do
+  it 'should create team' do
     assert_difference('Team.count') do
       post :create, team: { name: @team.name }
     end
-    flash[:notice].must_equal "Team was successfully created."
+    flash[:notice].must_equal 'Team was successfully created.'
     assert_redirected_to team_path(assigns(:team))
   end
 
-  it "should show team" do
+  it 'should show team' do
     get :show, id: @team
     assert_response :success
   end
 
-  it "should get edit" do
+  it 'should get edit' do
     get :edit, id: @team
     assert_response :success
   end
 
-  it "should update team" do
+  it 'should update team' do
     patch :update, id: @team, team: { name: @team.name  }
     assert_redirected_to team_path(assigns(:team))
-    flash[:notice].must_equal "Team was successfully updated."
+    flash[:notice].must_equal 'Team was successfully updated.'
   end
 
-  it "should destroy team" do
+  it 'should destroy team' do
     assert_difference('Team.count', -1) do
       delete :destroy, id: @team
     end
-    flash[:notice].must_equal "Team was successfully destroyed."
+    flash[:notice].must_equal 'Team was successfully destroyed.'
     assert_redirected_to teams_path
   end
 

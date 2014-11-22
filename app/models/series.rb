@@ -2,7 +2,7 @@ class Series < ActiveRecord::Base
   belongs_to :bowler
   belongs_to :league
   belongs_to :team
-  has_many :scores, -> { order("id ASC") }, :dependent => :destroy
+  has_many :scores, -> { order('id ASC') }, dependent: :destroy
 
   validates :bowler, presence: true
 
@@ -65,7 +65,7 @@ class Series < ActiveRecord::Base
     if week.nil?
       week = Series.select(:week).where(bowler: bowler, team: team).order(:week).last.week
     else
-      week = week - 1
+      week -= 1
     end
 
     series = Series.where(bowler: bowler, week: 1..(week), team: team)

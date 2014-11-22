@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :team do
-    name "Strikes"
+    name 'Strikes'
     league
 
     factory :team_of_bowlers do

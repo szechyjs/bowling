@@ -1,12 +1,12 @@
 class SeriesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_series, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
   # GET /series
   # GET /series.json
   def index
-    @series = Series.includes({:team => :league}, :bowler, :scores).order("id DESC")
+    @series = Series.includes({ team: :league }, :bowler, :scores).order('id DESC')
     respond_with(@series)
   end
 
@@ -48,25 +48,26 @@ class SeriesController < ApplicationController
     respond_with(@series)
   end
 
-  def get_next_week
-    @next_week = ""
-    series = Series.select(:id, :week).where(:bowler_id => params[:bowler], :league_id => params[:league], :team_id => params[:team]).order(:week).last
+  def next_week
+    @next_week = ''
+    series = Series.select(:id, :week).where(bowler_id: params[:bowler], league_id: params[:league], team_id: params[:team]).order(:week).last
 
-    if not series.nil?
-      if not series.week.nil?
+    unless series.nil?
+      unless series.week.nil?
         @next_week = series.week + 1
       end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_series
-      @series = Series.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def series_params
-      params.require(:series).permit(:bowler_id, :league_id, :team_id, :week, :date, scores_attributes: [:id, :score, :absent, :_destroy])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_series
+    @series = Series.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def series_params
+    params.require(:series).permit(:bowler_id, :league_id, :team_id, :week, :date, scores_attributes: [:id, :score, :absent, :_destroy])
+  end
 end

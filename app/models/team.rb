@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   belongs_to :league
-  delegate :name, :to => :league, :prefix => true
+  delegate :name, to: :league, prefix: true
 
   has_many :bowlers
   has_many :series
@@ -50,7 +50,7 @@ class Team < ActiveRecord::Base
       high_series_week = week
     end
 
-    { :scratch_pins => scratch_pins, :high_game => high_game, :high_series_pins => high_series_pins, :high_series_week => high_series_week }
+    { scratch_pins: scratch_pins, high_game: high_game, high_series_pins: high_series_pins, high_series_week: high_series_week }
   end
 
   def series_scores
@@ -80,8 +80,6 @@ class Team < ActiveRecord::Base
     bowlers.each do |bowler|
       avg = Series.average(bowler, self)
       handicap = Series.handicap(self, avg)
-      high_game = 0
-      high_series = 0
       scratch_game = 0
       scratch_series = 0
       series = Series.where(team: self, bowler: bowler).includes(:scores)
@@ -95,8 +93,8 @@ class Team < ActiveRecord::Base
         end
       end
 
-      stats << {:name => bowler.name, :handicap => handicap, :average => avg,
-                :scratch_game => scratch_game, :scratch_series => scratch_series}
+      stats << { name: bowler.name, handicap: handicap, average: avg,
+                 scratch_game: scratch_game, scratch_series: scratch_series }
     end
     stats.sort_by { |stat| stat[:handicap] }
   end

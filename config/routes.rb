@@ -15,7 +15,7 @@ Bowling::Application.routes.draw do
   resources :bowlers
   resources :series do
     collection do
-      get 'get_next_week'
+      get 'next_week'
     end
   end
 

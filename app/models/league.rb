@@ -6,7 +6,7 @@ class League < ActiveRecord::Base
   validates :start_date, presence: true
 
   def day
-    start_date.strftime("%A")
+    start_date.strftime('%A')
   end
 
   def to_s

@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :league do
-    name "A League"
-    start_date "2014-01-09"
+    name 'A League'
+    start_date '2014-01-09'
     weeks 12
     basis 210
     percentage 90

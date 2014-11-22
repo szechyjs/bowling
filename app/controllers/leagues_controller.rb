@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_league, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
@@ -51,13 +51,13 @@ class LeaguesController < ApplicationController
   # GET /leagues/1/stats
   def stats
     @league = League.find(params[:id])
-    @teams = @league.teams.includes([:bowlers,:league])
+    @teams = @league.teams.includes([:bowlers, :league])
     weeks = []
     @league.series.select(:week).group(:week).order(:week).each do |series|
       weeks << series.week
     end
     @weeks = weeks
-    @bowler_stats = @teams.map{ |team| team.bowler_stats }.flatten.sort_by { |stat| stat[:handicap] }
+    @bowler_stats = @teams.map { |team| team.bowler_stats }.flatten.sort_by { |stat| stat[:handicap] }
   end
 
   # GET /leagues/1/week/2
@@ -65,7 +65,7 @@ class LeaguesController < ApplicationController
     @week = params[:week]
     @series_by_team = []
     @games_by_team = []
-    @totals_by_team = Hash.new
+    @totals_by_team = {}
     League.find(params[:id]).teams.each do |team|
       team_series = team.series.where(week: params[:week]).includes([:bowler, :scores]).order(:id)
       @series_by_team << team_series
@@ -86,13 +86,14 @@ class LeaguesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_league
-      @league = League.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def league_params
-      params.require(:league).permit(:name, :start_date, :weeks, :basis, :percentage)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_league
+    @league = League.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def league_params
+    params.require(:league).permit(:name, :start_date, :weeks, :basis, :percentage)
+  end
 end
