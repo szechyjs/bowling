@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "1.9.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.0.12'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
@@ -58,7 +58,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 # Use Twitter Bootstrap
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 
 # Bootstrap date picker
 gem 'bootstrap-datepicker-rails'
