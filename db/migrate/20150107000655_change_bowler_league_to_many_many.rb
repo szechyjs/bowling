@@ -5,7 +5,7 @@ class ChangeBowlerLeagueToManyMany < ActiveRecord::Migration
       t.index :team_id
     end
 
-    execute "INSERT INTO bowlers_teams SELECT id, team_id FROM bowlers;"
+    execute "INSERT INTO bowlers_teams SELECT id, team_id FROM bowlers WHERE team_id IS NOT NULL;"
 
     remove_column :bowlers, :team_id
 
