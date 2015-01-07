@@ -56,7 +56,7 @@ describe LeaguesController do
   it 'should show week stats' do
     l = create(:league)
     t = create(:team, league: l)
-    b = create(:bowler, team: t)
+    b = create(:bowler, teams: [t])
     s = create(:series_with_scores, league: l, team: t, bowler: b)
     get :week, id: s.league, week: 1
     assert_response :success

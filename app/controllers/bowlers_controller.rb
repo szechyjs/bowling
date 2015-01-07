@@ -6,7 +6,7 @@ class BowlersController < ApplicationController
   # GET /bowlers
   # GET /bowlers.json
   def index
-    @bowlers = Bowler.all.includes(team: :league)
+    @bowlers = Bowler.all
     respond_with(@bowlers)
   end
 
@@ -52,11 +52,11 @@ class BowlersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_bowler
-    @bowler = Bowler.find(params[:id])
+    @bowler = Bowler.includes(:teams => :league).find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def bowler_params
-    params.require(:bowler).permit(:first_name, :last_name, :nickname, :email, :team_id)
+    params.require(:bowler).permit(:first_name, :last_name, :nickname, :email, :team_ids => [])
   end
 end

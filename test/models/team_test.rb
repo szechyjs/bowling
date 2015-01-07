@@ -71,8 +71,8 @@ describe Team do
 
   it 'computes bowler stats' do
     team = create(:team)
-    b1 = create(:bowler, team: team)
-    b2 = create(:bowler, team: team)
+    b1 = create(:bowler, teams: [team])
+    b2 = create(:bowler, teams: [team])
     create(:series_with_scores, team: team, bowler: b1)
     create(:series_with_scores, team: team, bowler: b2)
     create(:series_with_scores, team: team, bowler: b1, week: 2)

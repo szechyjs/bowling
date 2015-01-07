@@ -9,7 +9,6 @@
       <th><%= model_class.human_attribute_name(:first_name) %></th>
       <th><%= model_class.human_attribute_name(:last_name) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:team_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +19,6 @@
         <td><%= bowler.first_name %></td>
         <td><%= bowler.last_name %></td>
         <td><%= bowler.email %></td>
-        <td><%= bowler.team %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_bowler_path(bowler), :class => 'btn btn-default btn-xs' %>

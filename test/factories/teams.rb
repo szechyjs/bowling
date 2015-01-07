@@ -11,7 +11,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |team, evaluator|
-        create_list(:bowler, evaluator.bowler_count, team: team)
+        create_list(:bowler, evaluator.bowler_count, teams: [team])
       end
     end
   end

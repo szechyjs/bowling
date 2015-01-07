@@ -10,8 +10,14 @@
   <dd><%= @bowler.last_name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @bowler.email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:team_id) %>:</strong></dt>
-  <dd><%= @bowler.team %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:teams) %>:</strong></dt>
+  <dd>
+    <ul style="padding-left:0;list-style:none;">
+    <% @bowler.teams.each do |team| %>
+      <li><%= team %></li>
+    <% end %>
+    </ul>
+  </dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

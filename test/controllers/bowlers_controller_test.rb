@@ -51,6 +51,6 @@ describe BowlersController do
 
   def setup_test
     sign_in create(:user)
-    @bowler = create(:bowler)
+    @bowler = create(:bowler_with_team)
   end
 end

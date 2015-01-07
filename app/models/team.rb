@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
   belongs_to :league
   delegate :name, to: :league, prefix: true
 
-  has_many :bowlers
+  has_and_belongs_to_many :bowlers
   has_many :series
 
   validates :name, presence: true

@@ -5,6 +5,9 @@ FactoryGirl.define do
     first_name 'John'
     last_name 'Doe'
     sequence(:email) { |n| "bowler#{n}@example.com" }
-    team
+  end
+
+  factory :bowler_with_team, parent: :bowler do
+    teams {[FactoryGirl.create(:team)]}
   end
 end

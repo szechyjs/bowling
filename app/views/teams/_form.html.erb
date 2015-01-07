@@ -1,7 +1,7 @@
 <%= bootstrap_form_for team, style: :horizontal, left: "col-sm-2", right: "col-sm-4" do |f| %>
   <%= f.alert_message "Please fix the #{pluralize(team.errors.count, "error")} below." %>
   <%= f.text_field :name, :class => 'form-control' %>
-  <%= f.collection_select :league_id, League.all, :id, :name, {:prompt => true}, {:class => 'form-control'} %>
+  <%= f.collection_select :league_id, League.all, :id, :to_s, {:prompt => true}, {:class => 'form-control'} %>
   <%= f.form_group do %>
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
