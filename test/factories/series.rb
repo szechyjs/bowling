@@ -9,7 +9,7 @@ FactoryGirl.define do
     date '2014-01-11'
 
     factory :series_with_scores do
-      ignore do
+      transient do
         scores_count 3
         absent false
       end

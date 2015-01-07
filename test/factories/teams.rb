@@ -6,7 +6,7 @@ FactoryGirl.define do
     league
 
     factory :team_of_bowlers do
-      ignore do
+      transient do
         bowler_count 4
       end
 
