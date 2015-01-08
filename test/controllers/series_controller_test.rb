@@ -47,7 +47,7 @@ describe SeriesController do
   end
 
   it 'should get next week' do
-    get :next_week, format: 'js', bowler: @series.bowler.id, league: @series.league.id, team: @series.team.id
+    xhr :get, :next_week, format: 'js', bowler: @series.bowler.id, league: @series.league.id, team: @series.team.id
     response.content_type.must_equal Mime::JS
     response.body.must_include "val('2')"
   end

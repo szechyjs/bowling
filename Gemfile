@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.1.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.12'
+gem 'rails', '4.1.9'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
@@ -84,6 +84,7 @@ gem 'heroku-api'
 gem 'newrelic_rpm'
 
 group :development do
+  gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'  # Chrome Rails console
@@ -104,7 +105,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'capybara_minitest_spec'
-  gem 'turn'
   gem 'flog'
   gem 'reek'
   gem 'flay'
