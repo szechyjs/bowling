@@ -8,4 +8,6 @@ unless ENV['HEROKU_API_KEY'].nil?
 
   ENV['HEROKU_RELEASE_NAME'] = release['name']
   ENV['HEROKU_RELEASE_COMMIT'] = release['commit']
+
+  GC::Profiler.enable
 end
