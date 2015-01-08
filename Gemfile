@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.1.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.9'
+gem 'rails', '4.2.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
@@ -30,6 +30,9 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
+
+# Rails 4.2 extracts respond_to methods to its own gem
+gem 'responders', '~> 2.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -90,6 +93,7 @@ group :development do
   gem 'meta_request'  # Chrome Rails console
   gem 'bullet'        # DB query lint
   gem 'rails_best_practices'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
