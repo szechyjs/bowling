@@ -20,6 +20,8 @@ class SeriesController < ApplicationController
   def new
     @series = Series.new
     @series.scores.build
+    @series.scores.build
+    @series.scores.build
   end
 
   # GET /series/1/edit
